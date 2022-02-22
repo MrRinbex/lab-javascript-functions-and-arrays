@@ -1,24 +1,93 @@
 // Iteration #1: Find the maximum
-function maxOfTwoNumbers() {}
-
+function maxOfTwoNumbers(a,b) {
+  if (a>b)
+  return a;
+  else if (a<b)
+  return b;
+  else 
+  return a = b;
+}
 
 
 // Iteration #2: Find longest word
 const words = ['mystery', 'brother', 'aviator', 'crocodile', 'pearl', 'orchard', 'crackpot'];
-
-function findLongestWord() {}
+    
+function findLongestWord(arr) {
+  let wordMax = [];
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i].length > wordMax.length) {
+        wordMax = arr[i];
+        return wordMax;
+      } else if (arr[i].length === wordMax.length){
+      return wordMax;}
+    }
+    if (!arr.length)
+    return null
+    else 
+    return arr[0] 
+  }
+    
 
 
 
 // Iteration #3: Calculate the sum
 const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 
-function sumNumbers() {}
-
+function sumNumbers(num) {
+    let sum = 0;
+      for(let i = 0; i < num.length; i++){
+        sum += num[i];
+        return sum;
+        } if(!num.length)
+        return 0;
+        else 
+         return sum.reduce((a,b) => a + b); // i cannot find a solution :(
+        }
 
 
 // Iteration #3.1 Bonus:
-function sum() {}
+
+function sum(num) {
+  let sum = 0
+  if (!num.length)
+  return 0;
+   // i got helped by Tristan //
+  if(Array.isArray(num) && num.length == 0){
+    return 0
+  }
+  if(num.length === 1){
+    if(typeof num[0] === 'object' || Array.isArray(num[0])){
+      throw new Error("Unsupported data type sir or ma'am")
+    }
+    if(typeof num[0] === 'number'){
+     return num[0]
+    }
+    if(typeof num[0]==='string'){
+      return num[0].length
+    }
+    if(typeof num[0]==='boolean'){
+      return num[0]
+    }
+  }
+  if( num.length > 1){
+    num.forEach(function(x){
+      if(typeof x === 'object' || Array.isArray(x)){
+        throw new Error("Unsupported data type sir or ma'am")
+      }
+      if(typeof x === 'number'){
+      sum += x
+      }
+      if(typeof x === 'string'){
+        sum += x.length
+      }
+      if(typeof x === 'boolean' && x){
+        sum++
+      }
+
+    })
+    return sum
+  }
+}
 
 
 
@@ -26,16 +95,52 @@ function sum() {}
 // Level 1: Array of numbers
 const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
 
-function averageNumbers() {}
+function averageNumbers(num) {
+if (!num.length)
+  return null;
+  let avgNum = 0;
+  if(num.length === 1){
+    return num[0].length
+  }
+  // for(let i = 0;i<num.length;i++){
+  //   avgNum += num[i]
+  // }
+  // return avgNum;
+
+  
+}
 
 
 // Level 2: Array of strings
 const wordsArr = ['seat', 'correspond', 'linen', 'motif', 'hole', 'smell', 'smart', 'chaos', 'fuel', 'palace'];
 
-function averageWordLength() { }
+function averageWordLength(word) {
+  if (!word.length)
+  return null
+  let avgWord = "";
+  let count = 0;
+  if(word.length === 1)
+  return word[0].length
+   // should return the average of a the array didn't work
+  word.forEach(function(item) {
+    avgWord += item;
+    count ++;
+  });
+  return total / count;
+ }
 
 // Bonus - Iteration #4.1
-function avg() {}
+function avg(word) {
+  if (!word.length)
+  return null;
+  let total = "";
+  let count = 0;
+  word.forEach(function(item) {
+    total += item;
+    count ++;
+  });
+  return (total / count*100)/100;
+}
 
 // Iteration #5: Unique arrays
 const wordsUnique = [
@@ -52,14 +157,31 @@ const wordsUnique = [
   'bring'
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(arr) {
+if(!arr.length){
+  return null;
+}
+let uniqArr = [];
+for(let i = 0; i<arr.length ;i++){
+  uniqArr.push(arr[i])
+}
+return uniqArr;
+}
 
 
 
 // Iteration #6: Find elements
 const wordsFind = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience'];
 
-function doesWordExist() {}
+function doesWordExist(arr,word) {
+  if(!arr.length)
+  return null;
+  let array = [];
+  for(let i= 0;i<arr.length;i++){
+    array.push(arr[i]);
+  }
+  return arr.includes(word) ? true : false
+}
 
 
 
@@ -78,7 +200,21 @@ const wordsCount = [
   'matter'
 ];
 
-function howManyTimes() {}
+function howManyTimes(arr, elements) {
+  if(!arr.length)
+  return 0;
+  let count = 0;
+
+  if(arr.length === 1){
+    return arr.includes(elements) ? 1 :0;
+  } if(arr.length > 1){
+    arr.forEach(function(item){
+      if(item === elements)
+      count++
+    })
+    return count;
+  }
+}
 
 
 
